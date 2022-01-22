@@ -2,8 +2,9 @@ body {font-family:sans-serif}
 p {color:maroon}
 h1,h2 { color: gray;}
 h1 {border-bottom: 1px solid black;}
+
+p.blueberry {color: purple}
 p.greentea {color:green;}
 p.raspberry {color: blue;}
-p.blueberry {color: purple}
-h1 {font-family: 'Times New Roman', Times, serif; font-size: 52;}
+h1 {font-family: 'Times New Roman', Times, serif; font-size: 52; font-weight: 900;}
 

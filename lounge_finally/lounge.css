@@ -16,8 +16,13 @@ h2 {font-size: 130%;}
     border-style: solid;
     background-color: #a7cece;
     padding: 20px;
+    padding-left: 80px;
     margin: 30px;
-    font-size: 100%;
+    margin-right: 250px;
+    font-size: medium;
+    background-image: url(images/background.gif);
+    background-repeat: no-repeat;
+    background-position: top left;
   
 
 }

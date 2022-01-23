@@ -6,7 +6,7 @@ line-height: 1.6em;
 h1,h2 {color: #007e7e;}
 h1 {font-size: 150%;}
 h2 {font-size: 130%;}
-.guarantee {
+#guarantee {
     font-family: serif;
     line-height: 1.9em;
     color: #444444;

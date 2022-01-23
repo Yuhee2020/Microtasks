@@ -11,9 +11,10 @@ h2 {font-size: 130%;}
     line-height: 1.9em;
     color: #444444;
     font-style: italic;
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-style:dashed;
+    border-radius: 15px;
     background-color: #a7cece;
     padding: 20px;
     padding-left: 80px;

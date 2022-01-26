@@ -10,6 +10,9 @@ body {
   margin:           10px 10px 0px 10px;
   height:           108px;
 }
+#headerSlogan {
+  float: right;
+}
 
 #main {
   background:       #efe5d0 url(images/background.gif) top left;

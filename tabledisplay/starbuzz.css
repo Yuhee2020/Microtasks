@@ -88,3 +88,15 @@ vertical-align: top;
   font-size: 105%;
   vertical-align: top;
 }
+#award {
+  position: absolute;
+  top: 30px;
+  left: 365px;
+}
+#coupon {
+  position: fixed;
+  top: 350px;
+  left: -90px;
+}
+#coupon а, img {
+  border: none;}

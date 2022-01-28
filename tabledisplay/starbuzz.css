@@ -5,7 +5,7 @@ body {
   margin:           0px;
 }
 
-#header {
+header {
   background-color: #675c47;
   margin:           10px 10px 0px 10px;
   height:           108px;
@@ -21,14 +21,14 @@ body {
   margin:           0px 10px 10px 10px;
 }
 
-#sidebar {
+aside {
   background:       #efe5d0 url(images/background.gif) bottom right;
   font-size:        105%;
   padding:          15px;
   margin:           0px 10px 10px 10px;
 }
 
-#footer {
+footer {
   background-color: #675c47;
   color:            #efe5d0;
   text-align:       center;
@@ -81,7 +81,7 @@ vertical-align: top;
   font-size: 105%;
   vertical-align: top;
 }
-#sidebar {
+aside {
   display: table-cell;
   background: #efe5d0 url(images/background.gif) bottom right;
   padding: 15px;

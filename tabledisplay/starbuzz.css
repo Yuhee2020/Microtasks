@@ -67,14 +67,14 @@ a:visited {
 #tableRow {
   display: table-row;
 }
-#drinks {
+section#drinks {
   display:table-cell;
   background-color: #efe5d0;
 width: 20%;
 padding: 15px;
 vertical-align: top;
 }
-#main {
+section#main {
   display: table-cell;
   background: #efe5d0 url(images/background.gif) top left;
   padding: 15px;

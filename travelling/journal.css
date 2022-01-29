@@ -25,14 +25,26 @@ table{
   margin: 0px 20px;
   border: thin solid black;
   caption-side: bottom;
+  border-spacing: 0px;
+  
 }
 
 td, th {
   border: thin solid gray;
   padding: 5px;
+  
   }
 
   caption {
     font-style: italic;
     padding-top: 8px;
   }
+
+  .center {text-align: center;}
+  .right {text-align: right;}
+
+  th{background-color: burlywood;}
+
+ .colorcell {background-color: lightgoldenrodyellow;}
+
+ 

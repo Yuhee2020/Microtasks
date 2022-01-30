@@ -47,4 +47,14 @@ td, th {
 
  .colorcell {background-color: lightgoldenrodyellow;}
 
+ table table th, table table td {
+   background-color: white;
+ }
+ li {list-style-image: url(images/backpack.gif);
+padding-top: 5px;
+margin-left: 20px;}
+
+ 
+
+ 
  

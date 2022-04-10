@@ -3,6 +3,8 @@ import './App.css';
 import {Button} from "./components/Button";
 import { Microtask3 } from './components/Microtask3';
 import { Microtask4 } from './components/Microtask4';
+import { Microtask5 } from './components/Microtask5';
+
 
 const students = [
     {id: 1, name: "James", age: 8},
@@ -43,13 +45,14 @@ function App() {
     return (
         <div className="App">
 
-            <Button name={"MyYouTubeChanel-1"} callBack={() => Button1Foo('Vasia', 21, "live in brest")}/>
-            <Button name={"MyYouTubeChanel-2"} callBack={() => Button2Foo('ivan', 55)}/>
-            <Button name={"StupidButton"} callBack={Button3Foo}/>
+            {/*<Button name={"MyYouTubeChanel-1"} callBack={() => Button1Foo('Vasia', 21, "live in brest")}/>*/}
+            {/*<Button name={"MyYouTubeChanel-2"} callBack={() => Button2Foo('ivan', 55)}/>*/}
+            {/*<Button name={"StupidButton"} callBack={Button3Foo}/>*/}
             {/*<NewComponent students={students} topCars={topCars}/>*/}
 
             {/*<Microtask3/>*/}
-            <Microtask4/>
+            {/*<Microtask4/>*/}
+            <Microtask5/>
 
 
         </div>

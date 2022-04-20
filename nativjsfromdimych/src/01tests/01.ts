@@ -13,6 +13,13 @@ export const mult=(a:number, b:number)=>{
 
 
 export const splitIntoWords=(sentence:string)=>{
-    return sentence.toLowerCase().split(" ").map(w=>w.replace('!',""))
+    return sentence.toLowerCase()
+        .split(" ")
+        .filter(w=>w!== "")
+        .map(w=>w
+            .replace('!',"")
+            .replace('.',"")
+            .replace(',',""))
+
 }
 

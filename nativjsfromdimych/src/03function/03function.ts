@@ -9,10 +9,10 @@ export const repairHouse=(houseType: HousesType)=>{
     houseType.repaired= true
 
 }
-export const toFireStaff=(building:BuildingsType, stuff: number)=>{
-    building.staffCount-=stuff
+export const toFireStaff=(building:BuildingsType, staff: number)=>{
+    building.staffCount-=staff
 }
 
-export const toHireStaff=(building: BuildingsType, stuff: number)=>{
-    building.staffCount+=stuff
+export const toHireStaff=(building: BuildingsType, staff: number)=>{
+    building.staffCount+=staff
 }

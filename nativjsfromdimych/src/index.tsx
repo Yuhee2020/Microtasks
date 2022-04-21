@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {sum} from "./01tests/01";
+import {oldAges} from "./04filter/04";
 
-let a = sum;
-sum(1,2)
-console.log(a(1,5))
+console.log(oldAges)
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState,KeyboardEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterType} from "./App";
 import s from "./Todolist.module.css"
 
@@ -11,10 +11,10 @@ type TaskType = {
 type PropsType = {
     title: string
     tasks: Array<TaskType>
-    removeTask: (taskId: string) => void
+    removeTask: (todolistID:string,taskId: string) => void
     changeFilter: (todolistID:string, value: FilterType) => void
-    addTask: (title:string) => void
-    changeStatus: (taskId: string, isDoneStatus:boolean)=>void
+    addTask: (todolistID:string, title:string) => void
+    changeStatus: (todolistID:string, taskId: string, isDoneStatus:boolean)=>void
     filter: FilterType
     todolistID:string
 }
@@ -32,7 +32,7 @@ export function Todolist(props: PropsType) {
         e.key==="Enter" && addTaskHandler()
     }
     const addTaskHandler = () => {
-        title.trim()? props.addTask(title.trim()) : setError("title is required")
+        title.trim()? props.addTask(props.todolistID,title.trim()) : setError("title is required")
         setTitle("")
     }
     const onAllClickHandler = () => {
@@ -59,10 +59,10 @@ export function Todolist(props: PropsType) {
         </div>
         <ul>{props.tasks.map(el => {
             const onClickHandler = () => {
-                props.removeTask(el.id)
+                props.removeTask(props.todolistID, el.id)
             }
             const onChangeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
-                props.changeStatus(el.id, e.currentTarget.checked)
+                props.changeStatus(props.todolistID, el.id, e.currentTarget.checked)
             }
             return (
                 <li key={el.id} className={el.isDone? s.task : ""}>
@@ -83,3 +83,5 @@ export function Todolist(props: PropsType) {
         </div>
     </div>
 }
+
+

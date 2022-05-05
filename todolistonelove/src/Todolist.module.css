@@ -1,15 +1,15 @@
-.error {
-    border: red 1px solid;
-}
-
-.errorMessage {
+.error{
     color: red;
 }
 
-.activeFilter {
-    background-color: aquamarine;
+.errorInput{
+    border-color: red;
 }
 
-.isDone {
-    opacity: 0.5;
+.task{
+    opacity: 50%;
+}
+
+.filter{
+    background-color: aquamarine;
 }

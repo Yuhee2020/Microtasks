@@ -1,7 +1,25 @@
 import s from "./Todolist.module.css";
-import React from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 
-export const FormForAdd = () => {
+export type FormForAddType={
+    callBack: (title:string)=>void
+
+}
+
+export const FormForAdd = (props:FormForAddType) => {
+    const [title, setTitle] = useState("")
+    const [error, setError] = useState("")
+    const onChangeTitleHandler=(e:ChangeEvent<HTMLInputElement>)=>{
+        setTitle(e.currentTarget.value)
+        setError("")
+    }
+    const onKeyPressHandler=(e:KeyboardEvent<HTMLInputElement>)=>{
+        e.key==="Enter" && addTaskHandler()
+    }
+    const addTaskHandler = () => {
+        title.trim()? props.callBack(title.trim()) : setError("title is required")
+        setTitle("")
+    }
     return (<div>
         <input value={title}
                className={error ? s.errorInput : ""}

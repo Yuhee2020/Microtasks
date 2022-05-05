@@ -2,6 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterType} from "./App";
 import s from "./Todolist.module.css"
 import {FormForAdd} from "./FormForAdd";
+import {EditSpan} from "./EditSpan";
 
 type TaskType = {
     id: string
@@ -18,6 +19,8 @@ type PropsType = {
     changeStatus: (todolistID:string, taskId: string, isDoneStatus:boolean)=>void
     filter: FilterType
     todolistID:string
+    EditTask: (todolistID:string, taskId:string, newTitle:string)=>void
+    EditTodolist: (todolistID:string, newTitle:string)=>void
 }
 
 export function Todolist(props: PropsType) {
@@ -35,10 +38,17 @@ export function Todolist(props: PropsType) {
         props.addTask(props.todolistID, title)
 
     }
+    const EditSpanHH=(taskId: string, newTitle: string )=>{
+        props.EditTask(props.todolistID, taskId, newTitle)
+    }
+    const EditTodolistHandler=(newTitle:string)=>{
+        props.EditTodolist(props.todolistID, newTitle)
+    }
+
 
 
     return <div>
-        <h3>{props.title}</h3>
+        <h3><EditSpan title={props.title} callBack={EditTodolistHandler}/> </h3>
 
           <FormForAdd callBack={AddTaskHandler}/>
 
@@ -50,13 +60,17 @@ export function Todolist(props: PropsType) {
             const onChangeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
                 props.changeStatus(props.todolistID, el.id, e.currentTarget.checked)
             }
+            const EditSpanHandler=(newTitle:string)=>{
+                EditSpanHH(el.id, newTitle)
+            }
             return (
                 <li key={el.id} className={el.isDone? s.task : ""}>
                     <button onClick={onClickHandler}>x</button>
                     <input type="checkbox"
                            onChange={onChangeHandler}
                            checked={el.isDone}/>
-                    <span>{el.title}</span>
+                    <EditSpan callBack={EditSpanHandler} title={el.title}/>
+
                 </li>
             )
         })}

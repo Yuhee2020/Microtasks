@@ -21,7 +21,7 @@ export const tasksReducer = (state: TasksType, action: tasksReducerType) => {
             return {...state}
         }
         case "ADD-TODOLIST": {
-            return state
+            return {...state,[action.payload.todolistId]:[]}
         }
 
         default:
@@ -29,7 +29,7 @@ export const tasksReducer = (state: TasksType, action: tasksReducerType) => {
     }
 }
 
-type tasksReducerType = addTaskACType | removeTaskACType | changeStatusACType | editTaskACType | removeTodoListACType | addTodoListACType
+type tasksReducerType = addTaskACType | removeTaskACType | changeStatusACType | editTaskACType | removeTodoList2ACType | addTodoList2ACType
 
 
 type addTaskACType = ReturnType<typeof addTaskAC>
@@ -63,16 +63,17 @@ export const editTaskAC = (todoListId: string, taskId: string, newTitle: string)
     } as const
 }
 
-type removeTodoListACType = ReturnType<typeof removeTodoListAC>
-export const removeTodoListAC = () => {
+type removeTodoList2ACType = ReturnType<typeof removeTodoList2AC>
+export const removeTodoList2AC = () => {
     return {
         type: "REMOVE-TODOLIST",
     } as const
 }
 
-type addTodoListACType = ReturnType<typeof addTodoListAC>
-export const addTodoListAC = () => {
+type addTodoList2ACType = ReturnType<typeof addTodoList2AC>
+export const addTodoList2AC = (todolistId:string) => {
     return {
         type: "ADD-TODOLIST",
+        payload:{todolistId}
     } as const
 }

@@ -1,56 +1,78 @@
-import {FilterType, TodoListsType} from "../App";
+import {TasksType} from "../App";
+import {v1} from "uuid";
 
-export const todolistsReducer = (state: Array<TodoListsType>, action: todolistsReducerType) => {
+export const tasksReducer = (state: TasksType, action: tasksReducerType) => {
 
     switch (action.type) {
-        case "CHANGE-FILTER": {
-            return state.map(el => el.id === action.payload.todoListId ? {...el, filter: action.payload.value} : el)
+        case "ADD-TASK": {
+            let newTask = {id: v1(), title: action.payload.title, isDone: false}
+            return {...state, [action.payload.todoListId]:[newTask, ...state[action.payload.todoListId]]}
+        }
+        case "REMOVE-TASK": {
+            return {...state, [action.payload.todoListId]: state[action.payload.todoListId].filter(el=>el.id!== action.payload.taskId)}
+        }
+        case "CHANGE-STATUS": {
+            return {...state, [action.payload.todoListId]: state[action.payload.todoListId].map(el=>el.id=== action.payload.taskId? {...el, isDone:action.payload.status}:el)}
+        }
+        case "EDIT-TASK": {
+            return {...state, [action.payload.todoListId]:state[action.payload.todoListId].map(el=>el.id=== action.payload.taskId?{...el, title:action.payload.newTitle}:el)}
         }
         case "REMOVE-TODOLIST": {
-            return state.filter((el=>el.id !==action.payload.todoListId))
+            return {...state}
         }
         case "ADD-TODOLIST": {
             return state
         }
-        case "EDIT-TODOLIST-TITLE": {
-            return state.map((el=>el.id === action.payload.todoListId? {...el,title:action.payload.newTitle}:el))
-        }
+
         default:
             return state
     }
 }
 
-type todolistsReducerType = changeFilterACType | removeTodoListACType | addTodoListACType | editTodoListTitleACType
+type tasksReducerType = addTaskACType | removeTaskACType | changeStatusACType | editTaskACType | removeTodoListACType | addTodoListACType
 
 
-type changeFilterACType = ReturnType<typeof changeFilterAC>
-export const changeFilterAC = (todoListId: string, value: FilterType) => {
+type addTaskACType = ReturnType<typeof addTaskAC>
+export const addTaskAC = (todoListId: string, title: string) => {
     return {
-        type: "CHANGE-FILTER",
-        payload: {todoListId, value}
+        type: "ADD-TASK",
+        payload: {todoListId, title}
     } as const
 }
 
-type removeTodoListACType=ReturnType<typeof removeTodoListAC>
-export const removeTodoListAC = (todoListId: string) => {
+type removeTaskACType = ReturnType<typeof removeTaskAC>
+export const removeTaskAC = (todoListId: string, taskId: string) => {
     return {
-        type:"REMOVE-TODOLIST",
-        payload:{todoListId}
+        type: "REMOVE-TASK",
+        payload: {todoListId, taskId}
+    } as const
+}
+type changeStatusACType = ReturnType<typeof changeStatusAC>
+export const changeStatusAC = (todoListId: string, taskId: string, status: boolean) => {
+    return {
+        type: "CHANGE-STATUS",
+        payload: {todoListId, taskId, status}
     } as const
 }
 
-type addTodoListACType=ReturnType<typeof addTodoListAC>
-export const addTodoListAC = (title: string) => {
+type editTaskACType = ReturnType<typeof editTaskAC>
+export const editTaskAC = (todoListId: string, taskId: string, newTitle: string) => {
     return {
-        type:"ADD-TODOLIST",
-        payload:{title}
+        type: "EDIT-TASK",
+        payload: {todoListId, taskId, newTitle}
     } as const
 }
 
-type editTodoListTitleACType=ReturnType<typeof editTodoListTitleAC>
-export const editTodoListTitleAC = (todoListId: string, newTitle: string) => {
+type removeTodoListACType = ReturnType<typeof removeTodoListAC>
+export const removeTodoListAC = () => {
     return {
-        type:"EDIT-TODOLIST-TITLE",
-        payload:{todoListId,newTitle}
+        type: "REMOVE-TODOLIST",
+    } as const
+}
+
+type addTodoListACType = ReturnType<typeof addTodoListAC>
+export const addTodoListAC = () => {
+    return {
+        type: "ADD-TODOLIST",
     } as const
 }

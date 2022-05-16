@@ -5,6 +5,7 @@ import {Rating} from "./components/Rating/Rating";
 import {UCRating} from "./components/Rating/UncontrolledRaiting";
 import {OnOff,} from "./components/OnOff/OnOff";
 import {UCOnOff} from "./components/OnOff/UCOnOff";
+import {GetValueOfUCInput, TrackValueOfUCInput} from "./components/Input/Input";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -28,6 +29,9 @@ function App() {
             <UCOnOff/>
             <OnOff on={on}
                      setOn={setOn}/>
+
+            <TrackValueOfUCInput/>
+            <GetValueOfUCInput/>
 
         </div>
     );

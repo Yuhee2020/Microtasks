@@ -11,7 +11,10 @@ function App() {
     let [ratingValue, setRatingValue] = useState(0)
     let [collapsed, setCollapsed] = useState(true)
     let [on, setOn] = useState(true)
+    const onClickHandler = (value: any) => {
+        alert("was cliked" + value)
 
+    }
 
     return (
         <div className="App">
@@ -21,7 +24,11 @@ function App() {
             <Accordion titleValue={"menu"}
                        collapsed={collapsed}
                        setCollapsed={() => setCollapsed(!collapsed)}
-                       items={["Dima", "vasia", "Dasha", "Ira"]}/>
+                       items={[{title: "Dima", value: 1}, {title: "vasia", value: 2}, {
+                           title: "Vania",
+                           value: 3
+                       }, {title: "Ira", value: 4}]}
+                       onClick={onClickHandler}/>
 
 
             {/*<Accordion titleValue={"users"} collapsed={false}/>*/}

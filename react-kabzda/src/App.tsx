@@ -5,12 +5,13 @@ import {Rating} from "./components/Rating/Rating";
 import {UCRating} from "./components/Rating/UncontrolledRaiting";
 import {OnOff,} from "./components/OnOff/OnOff";
 import {UCOnOff} from "./components/OnOff/UCOnOff";
-import {GetValueOfUCInput, TrackValueOfUCInput} from "./components/Input/Input";
+import {ControlledCheckBox, ControlledSelect, GetValueOfUCInput, TrackValueOfInput,} from "./components/Input/Input";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
     let [collapsed, setCollapsed] = useState(true)
     let [on, setOn] = useState(true)
+
 
     return (
         <div className="App">
@@ -19,7 +20,8 @@ function App() {
             <UCRating/>
             <Accordion titleValue={"menu"}
                        collapsed={collapsed}
-                       setCollapsed={()=>setCollapsed(!collapsed)}/>
+                       setCollapsed={() => setCollapsed(!collapsed)}
+                       items={["Dima", "vasia", "Dasha", "Ira"]}/>
 
 
             {/*<Accordion titleValue={"users"} collapsed={false}/>*/}
@@ -28,10 +30,12 @@ function App() {
 
             <UCOnOff/>
             <OnOff on={on}
-                     setOn={setOn}/>
+                   setOn={setOn}/>
 
-            <TrackValueOfUCInput/>
+            <TrackValueOfInput/>
             <GetValueOfUCInput/>
+            <ControlledCheckBox/>
+            <ControlledSelect/>
 
         </div>
     );

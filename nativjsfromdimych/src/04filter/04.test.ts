@@ -79,9 +79,7 @@ test("hard object test", () => {
         age: 30,
         address: user.address
     }
-    user2.address.title = "Kobrin"
 
-    expect(user.address?.title).toBe("Kobrin")
 
 
 })

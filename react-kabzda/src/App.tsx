@@ -6,14 +6,17 @@ import {UCRating} from "./components/Rating/UncontrolledRaiting";
 import {OnOff,} from "./components/OnOff/OnOff";
 import {UCOnOff} from "./components/OnOff/UCOnOff";
 import {ControlledCheckBox, ControlledSelect, GetValueOfUCInput, TrackValueOfInput,} from "./components/Input/Input";
+import {Select} from "./components/Select/Select";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
     let [collapsed, setCollapsed] = useState(true)
     let [on, setOn] = useState(true)
     const onClickHandler = (value: any) => {
-        alert("was cliked" + value)
-
+        alert("was cliked" + value)}
+    const [value, setValue]=useState("2")
+    const changeValue=(value:string)=>{
+        setValue(value)
     }
 
     return (
@@ -43,6 +46,13 @@ function App() {
             <GetValueOfUCInput/>
             <ControlledCheckBox/>
             <ControlledSelect/>
+            <Select value={value}
+                    onChange={changeValue}
+                    items={[
+                        {value: "1", title: "Minsk"},
+                        {value: "2", title: "Grodno"},
+                        {value: "3", title: "Brest"}
+                    ]}/>
 
         </div>
     );

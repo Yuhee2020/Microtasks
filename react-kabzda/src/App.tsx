@@ -8,6 +8,7 @@ import {UCOnOff} from "./components/OnOff/UCOnOff";
 import {ControlledCheckBox, ControlledSelect, GetValueOfUCInput, TrackValueOfInput,} from "./components/Input/Input";
 import {Select} from "./components/Select/Select";
 import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
+import {Example1} from "./components/reactMemo/reactMemo";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -54,6 +55,8 @@ function App() {
                         {value: "2", title: "Grodno"},
                         {value: "3", title: "Brest"}
                     ]}/>
+
+        <Example1/>
 
         </div>
     );

@@ -7,6 +7,7 @@ import {OnOff,} from "./components/OnOff/OnOff";
 import {UCOnOff} from "./components/OnOff/UCOnOff";
 import {ControlledCheckBox, ControlledSelect, GetValueOfUCInput, TrackValueOfInput,} from "./components/Input/Input";
 import {Select} from "./components/Select/Select";
+import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -36,7 +37,7 @@ function App() {
 
             {/*<Accordion titleValue={"users"} collapsed={false}/>*/}
             {/*<UncontrolledAccordion titleValue={"Menu"}/>*/}
-            {/*<UncontrolledAccordion titleValue={"Users"}/>*/}
+            <UncontrolledAccordion titleValue={"Users"}/>
 
             <UCOnOff/>
             <OnOff on={on}

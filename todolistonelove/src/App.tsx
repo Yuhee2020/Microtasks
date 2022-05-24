@@ -13,11 +13,11 @@ import {
     todolistsReducer
 } from "./reducers/todolistReducer";
 import {
-    addTaskAC, addTodoList2AC,
+    addTaskAC,
     changeStatusAC,
     editTaskAC,
     removeTaskAC,
-    removeTodoList2AC,
+
     tasksReducer
 } from "./reducers/tasksReducer";
 
@@ -60,8 +60,7 @@ function App() {
     });
     const removeTodoList = (todoListId: string) => {
         todoListsDispatch(removeTodoListAC(todoListId))
-        delete tasks[todoListId]
-        tasksDispatch(removeTodoList2AC())
+        tasksDispatch(removeTodoListAC(todoListId))
         // setTodoLists(todoLists.filter(el => el.id !== todoListId))
         // delete tasks[todoListId]
         // setTasks({...tasks})
@@ -84,10 +83,10 @@ function App() {
         // setTasks({...tasks, [todoListId]: tasks[todoListId].map(el => el.id === taskId ? {...el, isDone: status} : el)})
     }
     const addTodoList = (title: string) => {
-        let todolistId = v1()
-        let newTodolist: TodoListsType = {id: todolistId, title: title, filter: 'all'}
-        todoListsDispatch(addTodoListAC(newTodolist))
-        tasksDispatch(addTodoList2AC(todolistId))
+        /*let todolistId = v1()
+        let newTodolist: TodoListsType = {id: todolistId, title: title, filter: 'all'}*/
+        todoListsDispatch(addTodoListAC(title))
+        tasksDispatch(addTodoListAC(title))
         // setTodoLists([newTodolist, ...todoLists])
         // setTasks({...tasks, [todolistId]: []})
     }

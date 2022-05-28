@@ -1,0 +1,10 @@
+.error{
+    color: red;
+}
+.errorB{
+    border-color: red;
+}
+
+.active{
+    background-color: aqua;
+}

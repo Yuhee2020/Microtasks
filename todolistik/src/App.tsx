@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useReducer, useState} from "react";
 import {v1} from "uuid";
 import {TaskType, TodoList} from "./components/TodoList";
 import "./App.css"
+import {addTaskAC, changeFilterAC, changeStatusAC, removeTaskAC, todolistsReducer} from "./reducers/todolistsReducer";
 
 export type FilterType = "all" | "active" | "completed"
 export type TodoListType = {
@@ -13,7 +14,7 @@ export type TodoListType = {
 export type TodoListsType = Array<TodoListType>
 
 function App() {
-    const [todoLists, setTodolists] = useState<TodoListsType>([
+    const [todoLists, todolistDispatch] = useReducer(todolistsReducer,[
             {
                 todolistID: v1(),
                 title: "what to do?",
@@ -37,20 +38,19 @@ function App() {
         ]
     )
     const removeTask = (todolistId: string, taskId: string) => {
-        setTodolists(todoLists.map(el => el.todolistID === todolistId ? {...el, tasks: el.tasks.filter(t => t.taskId !== taskId)} : el))
+        todolistDispatch(removeTaskAC(todolistId,taskId))
     }
     const addTask = (todolistId: string, title: string) => {
-        let newTask = {taskId: v1(), title, isDone: false}
-        setTodolists(todoLists.map(el => el.todolistID === todolistId ? {...el, tasks: [newTask, ...el.tasks]} : el))
+        todolistDispatch(addTaskAC(todolistId,title))
     }
     const changeStatus = (todolistId: string, taskId: string, status: boolean) => {
-        setTodolists(todoLists.map(el => el.todolistID === todolistId ? {
-            ...el,
-            tasks: el.tasks.map(t => t.taskId === taskId ? {...t, isDone: status} : t)
-        } : el))
+        todolistDispatch(changeStatusAC(todolistId,
+            taskId,
+            status))
     }
     const changeFilter = (todolistId: string, value: FilterType) => {
-        setTodolists(todoLists.map(el => el.todolistID === todolistId ? {...el, filter: value} : el))
+        todolistDispatch(changeFilterAC(todolistId,
+            value))
     }
 
 

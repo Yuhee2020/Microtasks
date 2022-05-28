@@ -9,15 +9,17 @@ import {ControlledCheckBox, ControlledSelect, GetValueOfUCInput, TrackValueOfInp
 import {Select} from "./components/Select/Select";
 import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
 import {Example1} from "./components/reactMemo/reactMemo";
+import {Example11} from "./components/UseMemo";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
     let [collapsed, setCollapsed] = useState(true)
     let [on, setOn] = useState(true)
     const onClickHandler = (value: any) => {
-        alert("was cliked" + value)}
-    const [value, setValue]=useState("2")
-    const changeValue=(value:string)=>{
+        alert("was cliked" + value)
+    }
+    const [value, setValue] = useState("2")
+    const changeValue = (value: string) => {
         setValue(value)
     }
 
@@ -56,7 +58,8 @@ function App() {
                         {value: "3", title: "Brest"}
                     ]}/>
 
-        <Example1/>
+
+            <Example11/>
 
         </div>
     );

@@ -1,4 +1,4 @@
-import {FilterType, TodoListsType} from "../App";
+import {FilterType, TodoListsType, TodoListType} from "../App";
 import {v1} from "uuid";
 
 export const todolistsReducer = (state: TodoListsType, action: ActionType) => {
@@ -19,15 +19,33 @@ export const todolistsReducer = (state: TodoListsType, action: ActionType) => {
                 tasks: el.tasks.map(t => t.taskId === action.taskId ? {...t, isDone: action.status} : t)
             } : el)
         }
-        case "CHANGE-FILTER":{
+        case "CHANGE-FILTER": {
             return state.map(el => el.todolistID === action.todolistId ? {...el, filter: action.value} : el)
+        }
+        case "ADD-TODOLIST": {
+            let newTodolist: TodoListType = {
+                todolistID: v1(),
+                title: action.title,
+                filter: "all",
+                tasks: []
+            }
+            return [newTodolist,...state,]
+        }
+        case "REMOVE-TODOLIST": {
+            return state.filter(el => el.todolistID !== action.todolistId)
         }
         default:
             return state
     }
 }
 
-export type ActionType = removeTaskACType | addTaskACType | changeStatusACType | changeFilterACType
+export type ActionType =
+    removeTaskACType
+    | addTaskACType
+    | changeStatusACType
+    | changeFilterACType
+    | addTodolistACType
+    | removeTodolistACType
 export type removeTaskACType = ReturnType<typeof removeTaskAC>
 export const removeTaskAC = (todolistId: string, taskId: string) => {
     return {
@@ -62,5 +80,21 @@ export const changeFilterAC = (todolistId: string, value: FilterType) => {
         type: "CHANGE-FILTER",
         todolistId,
         value
+    } as const
+}
+
+export type addTodolistACType = ReturnType<typeof addTodolistAC>
+export const addTodolistAC = (title: string) => {
+    return {
+        type: "ADD-TODOLIST",
+        title
+    } as const
+}
+
+export type removeTodolistACType = ReturnType<typeof removeTodolistAC>
+export const removeTodolistAC = (todolistId: string) => {
+    return {
+        type: "REMOVE-TODOLIST",
+        todolistId
     } as const
 }

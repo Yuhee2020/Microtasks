@@ -6,3 +6,7 @@
 .App > div {
   margin-right: 50px;
 }
+
+div{
+    padding: 5px;
+}

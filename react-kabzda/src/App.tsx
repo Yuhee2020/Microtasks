@@ -9,7 +9,7 @@ import {ControlledCheckBox, ControlledSelect, GetValueOfUCInput, TrackValueOfInp
 import {Select} from "./components/Select/Select";
 import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
 import {Example1} from "./components/reactMemo/reactMemo";
-import {Example11} from "./components/UseMemo";
+import {Example11, Example12} from "./components/useMemo/UseMemo";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -60,6 +60,7 @@ function App() {
 
 
             <Example11/>
+            <Example12/>
 
         </div>
     );

@@ -1,5 +1,4 @@
-import React, {useReducer} from "react";
-import {v1} from "uuid";
+import React from "react";
 import {TaskType, TodoList} from "./components/TodoList";
 import "./App.css"
 import {
@@ -7,8 +6,9 @@ import {
     addTodolistAC,
     changeFilterAC,
     changeStatusAC,
-    removeTaskAC, removeTodolistAC, removeTodolistACType,
-    todolistsReducer
+    editTaskTitleAC, editTodolistTitleAC,
+    removeTaskAC,
+    removeTodolistAC
 } from "./reducers/todolistsReducer";
 import {FullInput} from "./components/FullInput";
 import {useDispatch, useSelector} from "react-redux";
@@ -19,13 +19,13 @@ export type TodoListType = {
     todolistID: string,
     title: string,
     filter: FilterType,
-    tasks:  Array<TaskType>
+    tasks: Array<TaskType>
 }
 export type TodoListsType = Array<TodoListType>
 
 function App() {
-    const todoLists=useSelector<RootStateType, TodoListsType>(state => state.todoLists)
-    const dispatch= useDispatch();
+    const todoLists = useSelector<RootStateType, TodoListsType>(state => state.todoLists)
+    const dispatch = useDispatch();
     const removeTask = (todolistId: string, taskId: string) => {
         dispatch(removeTaskAC(todolistId, taskId))
     }
@@ -41,13 +41,18 @@ function App() {
         dispatch(changeFilterAC(todolistId,
             value))
     }
-    const addTodolist=(title:string)=>{
+    const addTodolist = (title: string) => {
         dispatch(addTodolistAC(title))
     }
-    const removeTodolist=(todolistId:string)=>{
+    const removeTodolist = (todolistId: string) => {
         dispatch(removeTodolistAC(todolistId))
     }
-
+    const editTaskTitle = (todolistId: string, taskId: string, title: string) => {
+        dispatch(editTaskTitleAC(todolistId, taskId, title))
+    }
+    const editTodolistTitle = (todolistId: string, title: string) => {
+        dispatch(editTodolistTitleAC(todolistId,title))
+    }
 
     return (
         <div className="App">
@@ -73,7 +78,9 @@ function App() {
                         changeStatus={changeStatus}
                         filter={el.filter}
                         todolistId={el.todolistID}
-                        removeTodolist={removeTodolist}/>
+                        removeTodolist={removeTodolist}
+                        editTaskTitle={editTaskTitle}
+                        editTodolistTitle={editTodolistTitle}/>
                 )
             })}
 

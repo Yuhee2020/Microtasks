@@ -2,6 +2,7 @@ import React, {ChangeEvent} from "react";
 import {FilterType} from "../App";
 import s from "./TodoList.module.css"
 import {FullInput} from "./FullInput";
+import {EditSpan} from "./EditSpan";
 
 export type TaskType = {
     taskId: string
@@ -18,6 +19,8 @@ export type PropsType = {
     filter: FilterType
     todolistId: string
     removeTodolist: (todolistId: string) => void
+    editTaskTitle: (todolistId:string, taskId:string, title:string)=>void
+    editTodolistTitle: (todolistId:string,title:string)=>void
 }
 
 export const TodoList = (props: PropsType) => {
@@ -37,9 +40,15 @@ export const TodoList = (props: PropsType) => {
     const removeTodolistHandler = () => {
         props.removeTodolist(props.todolistId)
     }
+    const editTask=(taskId:string, title:string)=>{
+        props.editTaskTitle(props.todolistId,taskId,title )
+    }
+    const editTodolist=(title:string)=>{
+        props.editTodolistTitle(props.todolistId, title)
+    }
 
     return (<div>
-            <h3>{props.title}
+            <h3><EditSpan title={props.title} callBack={editTodolist}/>
                 <button onClick={removeTodolistHandler}>x</button>
             </h3>
             <FullInput callBack={addTask}/>
@@ -50,13 +59,16 @@ export const TodoList = (props: PropsType) => {
                 const changeStatusHandler = (e: ChangeEvent<HTMLInputElement>) => {
                     props.changeStatus(props.todolistId, el.taskId, e.currentTarget.checked)
                 }
+                const editTaskTit=(title:string)=>{
+                    editTask(el.taskId, title)
+                }
                 return (
                     <ul key={el.taskId}>
                         <li>
                             <input onChange={changeStatusHandler}
                                    type="checkbox"
                                    checked={el.isDone}/>
-                            {el.title}
+                            <EditSpan title={el.title} callBack={editTaskTit} />
                             <button onClick={removeTaskHandler}>x</button>
                         </li>
                     </ul>

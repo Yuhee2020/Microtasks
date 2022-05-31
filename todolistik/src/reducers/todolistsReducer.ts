@@ -1,7 +1,7 @@
 import {FilterType, TodoListsType, TodoListType} from "../App";
 import {v1} from "uuid";
 
-const initialState:TodoListsType=[
+const initialState: TodoListsType = [
     {
         todolistID: v1(),
         title: "what to do?",
@@ -51,10 +51,19 @@ export const todolistsReducer = (state: TodoListsType = initialState, action: Ac
                 filter: "all",
                 tasks: []
             }
-            return [newTodolist,...state,]
+            return [newTodolist, ...state,]
         }
         case "REMOVE-TODOLIST": {
             return state.filter(el => el.todolistID !== action.todolistId)
+        }
+        case "EDIT-TASK-TITLE": {
+            return state.map(el => el.todolistID === action.todolistId ? {
+                ...el,
+                tasks: el.tasks.map(t => t.taskId === action.taskId ? {...t, title: action.title} : t)
+            } : el)
+        }
+        case "EDIT-TODOLIST-TITLE":{
+            return state.map(el=>el.todolistID===action.todolistId? {...el, title:action.title}:el)
         }
         default:
             return state
@@ -68,6 +77,9 @@ export type ActionType =
     | changeFilterACType
     | addTodolistACType
     | removeTodolistACType
+    | editTaskTitleACType
+    | editTodolistTitleACType
+
 export type removeTaskACType = ReturnType<typeof removeTaskAC>
 export const removeTaskAC = (todolistId: string, taskId: string) => {
     return {
@@ -118,5 +130,21 @@ export const removeTodolistAC = (todolistId: string) => {
     return {
         type: "REMOVE-TODOLIST",
         todolistId
+    } as const
+}
+
+export type editTaskTitleACType = ReturnType<typeof editTaskTitleAC>
+export const editTaskTitleAC = (todolistId: string, taskId: string, title: string) => {
+    return {
+        type: "EDIT-TASK-TITLE",
+        todolistId, taskId, title
+    } as const
+}
+
+export type editTodolistTitleACType = ReturnType<typeof editTodolistTitleAC>
+export const editTodolistTitleAC = (todolistId: string, title: string) => {
+    return {
+        type: "EDIT-TODOLIST-TITLE",
+        todolistId, title
     } as const
 }

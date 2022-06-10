@@ -10,6 +10,7 @@ import {Select} from "./components/Select/Select";
 import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
 import {Example1} from "./components/reactMemo/reactMemo";
 import {Example11, Example12} from "./components/useMemo/UseMemo";
+import {LIkeUseCallBack} from "./components/useCallback/useCallback";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -60,7 +61,10 @@ function App() {
 
 
             <Example11/>
+            <hr/>
             <Example12/>
+            <hr/>
+            <LIkeUseCallBack/>
 
         </div>
     );

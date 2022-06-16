@@ -12,11 +12,17 @@ export const LIkeUseCallBack = () => {
 
         return books.filter(u=>u.toLowerCase().indexOf("a")>-1)},[books])
 
-    const addBook=useMemo(()=>{
-        return ()=>{
+    // const addBook=useMemo(()=>{
+    //     return ()=>{
+    //     const newBook=[...books, "Angular" + new Date().getTime()]
+    //     setBooks(newBook)}
+    // },[])  /// тоже самое что и Callback
+
+    const addBook=useCallback(()=>{
         const newBook=[...books, "Angular" + new Date().getTime()]
-        setBooks(newBook)}
+        setBooks(newBook)
     },[books])
+
     return <>
 
         <button onClick={()=>{setCount(count+1)}}>+</button>

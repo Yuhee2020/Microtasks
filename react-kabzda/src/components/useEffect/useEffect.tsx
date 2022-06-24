@@ -6,13 +6,16 @@ export const ExampleWithUseEffect=()=>{
 
     useEffect(()=>{
         console.log("UseEffect every render")
+        document.title=counter.toString()
     })
     useEffect(()=>{
         console.log("UseEffect only first render(ComponentDidMount)")
+        document.title=counter.toString()
     },[])
 
     useEffect(()=>{
         console.log("UseEffect first render and every counter change")
+        document.title=counter.toString()
     },[counter])
 
 

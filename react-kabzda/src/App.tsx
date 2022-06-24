@@ -8,9 +8,9 @@ import {UCOnOff} from "./components/OnOff/UCOnOff";
 import {ControlledCheckBox, ControlledSelect, GetValueOfUCInput, TrackValueOfInput,} from "./components/Input/Input";
 import {Select} from "./components/Select/Select";
 import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion";
-import {Example1} from "./components/reactMemo/reactMemo";
 import {Example11, Example12} from "./components/useMemo/UseMemo";
 import {LIkeUseCallBack} from "./components/useCallback/useCallback";
+import {ExampleUseState} from "./components/useState/useState";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -65,7 +65,7 @@ function App() {
             <Example12/>
             <hr/>
             <LIkeUseCallBack/>
-
+            <ExampleUseState/>
         </div>
     );
 }

@@ -11,6 +11,7 @@ import UncontrolledAccordion from "./components/Accordion/UncontrolledAccordion"
 import {Example11, Example12} from "./components/useMemo/UseMemo";
 import {LIkeUseCallBack} from "./components/useCallback/useCallback";
 import {ExampleUseState} from "./components/useState/useState";
+import {ExampleWithUseEffect} from "./components/useEffect/useEffect";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -66,6 +67,7 @@ function App() {
             <hr/>
             <LIkeUseCallBack/>
             <ExampleUseState/>
+            <ExampleWithUseEffect/>
         </div>
     );
 }

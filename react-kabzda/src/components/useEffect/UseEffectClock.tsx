@@ -14,6 +14,7 @@ export const UseEffectClock = () => {
 
     return (<div>
             {time}
+            {"DDD"}
         </div>
 
     )

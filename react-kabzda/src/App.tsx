@@ -16,6 +16,7 @@ import {UseEffectWithSetTimeout} from "./components/useEffect/UseEffectWithSetTi
 import {UseEffectWithSetInterval} from "./components/useEffect/UseEffectWithSetInterval";
 import {UseEffectClock} from "./components/useEffect/UseEffectClock";
 import {MyAnalogClock} from "./components/useEffect/MyAnalogClock";
+import {ResetEffect} from "./components/useEffect/ResetEffect";
 
 function App() {
     let [ratingValue, setRatingValue] = useState(0)
@@ -79,6 +80,7 @@ function App() {
             <hr/>
             <UseEffectClock/>
             <MyAnalogClock/>
+            <ResetEffect/>
         </div>
     );
 }
